@@ -1,0 +1,12 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index 88f15ec..a2b40e9 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -90,6 +90,7 @@ easy_admin:
+         Genus:
+             class: AppBundle\Entity\Genus
+             label: Genuses
++            help: Genuses are not covered under warranty!
+         GenusNote:
+             class: AppBundle\Entity\GenusNote
+             label: Genus Notes

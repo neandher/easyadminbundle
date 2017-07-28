@@ -1,0 +1,24 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index 98d73c2..45d05c0 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -84,6 +84,8 @@ easy_admin:
+         brand_color: '#81b9ba'
+         assets:
+             css: ['css/custom_backend.css']
++        templates:
++            field_id: 'admin/fields/_id.html.twig'
+     list:
+         title: 'List of %%entity_label%%'
+         actions: ['show']
+@@ -108,8 +110,8 @@ easy_admin:
+             search:
+                 help: null
+                 fields: ['id', 'name']
+-            templates:
+-                field_id: 'admin/fields/_id.html.twig'
++#            templates:
++#                field_id: 'admin/fields/_id.html.twig'
+         GenusHorde:
+             class: AppBundle\Entity\Genus
+             label: HORDE of Genuses 😱 !!!

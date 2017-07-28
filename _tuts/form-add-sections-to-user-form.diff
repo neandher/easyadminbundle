@@ -1,0 +1,24 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index cd834cb..136688b 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -192,11 +192,17 @@ easy_admin:
+                     - { property: 'avatarUri', type: 'url' }
+             form:
+                 fields:
++                    - { type: 'section', label: 'User details' }
+                     - { property: 'fullName', type: 'text', help: 'First then Last' }
+                     - { type: 'divider' }
+                     - avatarUri
+-                    - { type: 'divider' }
++                    -
++                        type: 'section'
++                        label: 'Contact information'
++                        icon: 'phone'
++                        help: 'Only for emergencies!'
++                        css_class: 'any-you-want'
+                     - email
+-                    - { type: 'divider' }
++                    - { type: 'section', label: 'Education' }
+                     - isScientist
+                     - universityName

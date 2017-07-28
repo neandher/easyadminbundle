@@ -1,0 +1,135 @@
+diff --git a/app/Resources/views/easy_admin/dashboard.html.twig b/app/Resources/views/easy_admin/dashboard.html.twig
+new file mode 100644
+index 0000000..8f582d7
+--- /dev/null
++++ b/app/Resources/views/easy_admin/dashboard.html.twig
+@@ -0,0 +1,83 @@
++{% extends '@EasyAdmin/default/layout.html.twig' %}
++
++{% set _content_title = 'Admin dashboard' %}
++
++{% block page_title -%}
++    {{ _content_title }}
++{%- endblock %}
++
++{% block content_header %}
++    <h1 class="title">{{ _content_title }}</h1>
++{% endblock %}
++
++{% block main %}
++    <div class="row">
++        <div class="col-sm-4">
++            <div class="panel panel-primary">
++                <div class="panel-heading">
++                    <h3 class="panel-title">Stats</h3>
++                </div>
++
++                <div class="panel-body">
++                    <ul class="list-group" style="margin-left: 0;">
++                        <li class="list-group-item">
++                            <span class="badge">{{ genusCount }}</span>
++                            Genus count
++                        </li>
++
++                        <li class="list-group-item">
++                            <span class="badge">{{ publishedGenusCount }}</span>
++                            Published genus count
++                        </li>
++                    </ul>
++                </div>
++            </div>
++        </div>
++
++        <div class="col-sm-4">
++            <div class="panel panel-primary">
++                <div class="panel-heading">
++                    <h3 class="panel-title">Chart</h3>
++                </div>
++
++                <div class="panel-body">
++                    <script type="text/javascript"
++                            src="https://ssl.gstatic.com/trends_nrtr/1015_RC10/embed_loader.js"></script>
++                    <script type="text/javascript">
++                        trends.embed.renderExploreWidget("TIMESERIES", {
++                            "comparisonItem": [{
++                                "keyword": "funny cat videos",
++                                "geo": "",
++                                "time": "2012-05-17 2017-05-17"
++                            }], "category": 0, "property": ""
++                        }, {
++                            "exploreQuery": "q=funny%20cat%20videos",
++                            "guestPath": "https://trends.google.com:443/trends/embed/"
++                        });
++                    </script>
++                </div>
++            </div>
++        </div>
++
++        <div class="col-sm-4">
++            <div class="panel panel-primary">
++                <div class="panel-heading">
++                    <h3 class="panel-title">{{ randomGenus.name }}</h3>
++                </div>
++
++                <div class="panel-body">
++                    <p>
++                        <img src="{{ asset('images/octopus-rubescens.jpg') }}" />
++                    </p>
++
++                    <p>{{ randomGenus.funFact }}</p>
++
++                    <a href="{{ path('easyadmin', {entity: 'Genus', action: 'show', id: randomGenus.id}) }}"
++                       class="btn btn-primary">
++                        Show details
++                    </a>
++                </div>
++            </div>
++        </div>
++    </div>
++{% endblock %}
+diff --git a/app/config/config.yml b/app/config/config.yml
+index d8da6b4..b07a85f 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -93,6 +93,7 @@ easy_admin:
+             - horizontal
+             - easy_admin/_form_theme.html.twig
+         menu:
++            - { label: 'Dashboard', route: 'admin_dashboard', default: true }
+             - User
+             - Genus
+             - GenusHorde
+diff --git a/src/AppBundle/Controller/EasyAdmin/AdminController.php b/src/AppBundle/Controller/EasyAdmin/AdminController.php
+index a6f32de..1f770ef 100644
+--- a/src/AppBundle/Controller/EasyAdmin/AdminController.php
++++ b/src/AppBundle/Controller/EasyAdmin/AdminController.php
+@@ -2,7 +2,9 @@
+ 
+ namespace AppBundle\Controller\EasyAdmin;
+ 
++use AppBundle\Entity\Genus;
+ use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ 
+ class AdminController extends BaseAdminController
+ {
+@@ -10,4 +12,19 @@ class AdminController extends BaseAdminController
+     {
+         throw new \RuntimeException('Action for exporting an entity not defined');
+     }
++
++    /**
++     * @Route("/dashboard", name="admin_dashboard")
++     */
++    public function dashboardAction()
++    {
++        $em = $this->getDoctrine()->getManager();
++        $genusRepository = $em->getRepository(Genus::class);
++
++        return $this->render('easy_admin/dashboard.html.twig', [
++            'genusCount' => $genusRepository->getGenusCount(),
++            'publishedGenusCount' => $genusRepository->getPublishedGenusCount(),
++            'randomGenus' => $genusRepository->findRandomGenus()
++        ]);
++    }
+ }

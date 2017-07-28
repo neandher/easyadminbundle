@@ -1,0 +1,20 @@
+diff --git a/src/AppBundle/Form/GenusScientistEmbeddedForm.php b/src/AppBundle/Form/GenusScientistEmbeddedForm.php
+index f6232dd..100b962 100644
+--- a/src/AppBundle/Form/GenusScientistEmbeddedForm.php
++++ b/src/AppBundle/Form/GenusScientistEmbeddedForm.php
+@@ -36,7 +36,7 @@ class GenusScientistEmbeddedForm extends AbstractType
+     {
+         if ($event->getData() && $event->getData()->getId()) {
+             $form = $event->getForm();
+-            unset($form['user']);
++            // unset($form['user']);
+         }
+     }
+ 
+@@ -48,4 +48,4 @@ class GenusScientistEmbeddedForm extends AbstractType
+     }
+ 
+ 
+-}
+\ No newline at end of file
++}

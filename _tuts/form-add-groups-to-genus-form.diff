@@ -1,0 +1,51 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index cba3ca0..f4babc8 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -130,25 +130,37 @@ easy_admin:
+ #                field_id: 'admin/fields/_id.html.twig'
+             form:
+                 fields:
+-                    -
+-                        property: id
+-                        type_options: {disabled: true}
+-                    -
+-                        property: 'slug'
+-                        help: 'unique auto-generated value'
+-                        type_options: { disabled: true }
++                    - { type: 'group', css_class: 'col-sm-6', label: 'Basic information' }
+                     - name
+                     - speciesCount
+-                    - { property: 'funFact', type: 'textarea', css_class: 'js-markdown-input' }
+-                    - isPublished
+                     - { property: 'firstDiscoveredAt', type_options: { widget: 'single_text' }}
+                     - { property: 'subFamily', type: 'easyadmin_autocomplete' }
++                    - { type: 'section', label: 'Optional' }
++                    - { property: 'funFact', type: 'textarea', css_class: 'js-markdown-input' }
++                    - isPublished
++
++                    - { type: 'group', css_class: 'col-sm-6', label: 'Studied by ...' }
+                     -
+                         property: 'genusScientists'
+                         type: 'text'
+                         type_options:
+                             mapped: false
+                             attr: { class: 'js-genus-scientists-field' }
++
++                    -
++                        type: 'group'
++                        css_class: 'col-sm-6'
++                        label: 'Identification'
++                        icon: 'id-card-o'
++                        help: 'For administrators'
++                    -
++                        property: id
++                        type_options: {disabled: true}
++                    -
++                        property: 'slug'
++                        help: 'unique auto-generated value'
++                        type_options: { disabled: true }
++
+             new:
+                 fields:
+                     - '-id'

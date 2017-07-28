@@ -1,0 +1,12 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index 9b2a184..ea46019 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -89,6 +89,7 @@ easy_admin:
+     entities:
+         Genus:
+             class: AppBundle\Entity\Genus
++            label: Genuses
+         GenusNote:
+             class: AppBundle\Entity\GenusNote
+         SubFamily:

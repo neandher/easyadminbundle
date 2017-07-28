@@ -1,0 +1,56 @@
+diff --git a/app/Resources/views/easy_admin/show.html.twig b/app/Resources/views/easy_admin/show.html.twig
+new file mode 100644
+index 0000000..f64dd3f
+--- /dev/null
++++ b/app/Resources/views/easy_admin/show.html.twig
+@@ -0,0 +1,15 @@
++{% extends '@EasyAdmin/default/show.html.twig' %}
++
++{% block item_actions %}
++    {% set _show_actions = easyadmin_get_actions_for_show_item(_entity_config.name) %}
++    {% set _show_actions = _show_actions|filter_admin_actions(entity) %}
++    {% set _request_parameters = { entity: _entity_config.name, referer: app.request.query.get('referer') } %}
++
++    {{ include('@EasyAdmin/default/includes/_actions.html.twig', {
++        actions: _show_actions,
++        request_parameters: _request_parameters,
++        translation_domain: _entity_config.translation_domain,
++        trans_parameters: _trans_parameters,
++        item_id: _entity_id
++    }, with_context = false) }}
++{% endblock item_actions %}
+\ No newline at end of file
+diff --git a/src/AppBundle/Twig/EasyAdminExtension.php b/src/AppBundle/Twig/EasyAdminExtension.php
+index 03c138e..db48e46 100644
+--- a/src/AppBundle/Twig/EasyAdminExtension.php
++++ b/src/AppBundle/Twig/EasyAdminExtension.php
+@@ -3,9 +3,18 @@
+ namespace AppBundle\Twig;
+ 
+ use AppBundle\Entity\Genus;
++use AppBundle\Entity\User;
++use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+ 
+ class EasyAdminExtension extends \Twig_Extension
+ {
++    private $authorizationChecker;
++
++    public function __construct(AuthorizationCheckerInterface $authorizationChecker)
++    {
++        $this->authorizationChecker = $authorizationChecker;
++    }
++
+     public function getFilters()
+     {
+         return [
+@@ -22,6 +31,10 @@ class EasyAdminExtension extends \Twig_Extension
+             unset($itemActions['delete']);
+         }
+ 
++        if ($item instanceof User && !$this->authorizationChecker->isGranted('ROLE_SUPERADMIN')) {
++            unset($itemActions['edit']);
++        }
++
+         return $itemActions;
+     }
+ }

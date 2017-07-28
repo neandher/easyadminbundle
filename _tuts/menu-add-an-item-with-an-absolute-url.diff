@@ -1,0 +1,23 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index 741b322..79e6f73 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -118,6 +118,18 @@ easy_admin:
+                     - { label: 'Related' }
+                     - { entity: 'GenusNote', label: 'Notes', icon: 'sticky-note' }
+                     - { entity: 'SubFamily', label: 'Sub-Families', icon: '' }
++            -
++                label: 'Important stuff'
++                icon: 'exclamation'
++                children:
++                    -
++                        label: 'Silly kittens'
++                        url: 'https://www.youtube.com/results?search_query=silly+kittens'
++                        target: '_blank'
++                    -
++                        label: 'Wet cats'
++                        url: 'http://www.boredpanda.com/funny-wet-cats/'
++                        target: '_blank'
+     list:
+         title: 'List of %%entity_label%%'
+         actions: ['show', 'export']

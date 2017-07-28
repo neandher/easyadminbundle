@@ -1,0 +1,27 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index a93120f..ee63372 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -112,6 +112,22 @@ easy_admin:
+                 fields: ['id', 'name']
+ #            templates:
+ #                field_id: 'admin/fields/_id.html.twig'
++            form:
++                fields:
++                    - id
++                    - name
++                    - speciesCount
++                    - funFact
++                    - isPublished
++                    - firstDiscoveredAt
++                    - subFamily
++                    - genusScientists
++            new:
++                fields:
++                    - '-id'
++            edit:
++                fields:
++                    - slug
+         GenusHorde:
+             class: AppBundle\Entity\Genus
+             label: HORDE of Genuses 😱 !!!

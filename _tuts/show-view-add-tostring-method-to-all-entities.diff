@@ -1,0 +1,72 @@
+diff --git a/src/AppBundle/Entity/Genus.php b/src/AppBundle/Entity/Genus.php
+index 4c1af7a..106455d 100644
+--- a/src/AppBundle/Entity/Genus.php
++++ b/src/AppBundle/Entity/Genus.php
+@@ -234,4 +234,9 @@ class Genus
+ 
+         return sprintf('%s recently ate: %s', $this->getName(), implode(', ', $foodItems));
+     }
++
++    public function __toString()
++    {
++        return (string) $this->getName();
++    }
+ }
+diff --git a/src/AppBundle/Entity/GenusNote.php b/src/AppBundle/Entity/GenusNote.php
+index 4078de9..115feb7 100644
+--- a/src/AppBundle/Entity/GenusNote.php
++++ b/src/AppBundle/Entity/GenusNote.php
+@@ -112,4 +112,9 @@ class GenusNote
+     {
+         return $this->id;
+     }
++
++    public function __toString()
++    {
++        return (string) $this->getNote();
++    }
+ }
+diff --git a/src/AppBundle/Entity/GenusScientist.php b/src/AppBundle/Entity/GenusScientist.php
+index d392492..98b2ede 100644
+--- a/src/AppBundle/Entity/GenusScientist.php
++++ b/src/AppBundle/Entity/GenusScientist.php
+@@ -76,4 +76,9 @@ class GenusScientist
+     {
+         $this->yearsStudied = $yearsStudied;
+     }
+-}
+\ No newline at end of file
++
++    public function __toString()
++    {
++        return (string) $this->getUser();
++    }
++}
+diff --git a/src/AppBundle/Entity/SubFamily.php b/src/AppBundle/Entity/SubFamily.php
+index 95e9de7..c625b9b 100644
+--- a/src/AppBundle/Entity/SubFamily.php
++++ b/src/AppBundle/Entity/SubFamily.php
+@@ -39,6 +39,6 @@ class SubFamily
+ 
+     public function __toString()
+     {
+-        return $this->getName();
++        return (string) $this->getName();
+     }
+ }
+diff --git a/src/AppBundle/Entity/User.php b/src/AppBundle/Entity/User.php
+index a9efeba..c5345f0 100644
+--- a/src/AppBundle/Entity/User.php
++++ b/src/AppBundle/Entity/User.php
+@@ -231,6 +231,11 @@ class User implements UserInterface
+         return $this->studiedGenuses;
+     }
+ 
++    public function __toString()
++    {
++        return (string) $this->getFullName() ? $this->getFullName() : $this->getEmail();
++    }
++
+     /**
+      * @return mixed
+      */

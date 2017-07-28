@@ -1,0 +1,28 @@
+diff --git a/src/AppBundle/Event/EasyAdminSubscriber.php b/src/AppBundle/Event/EasyAdminSubscriber.php
+new file mode 100644
+index 0000000..3ac1301
+--- /dev/null
++++ b/src/AppBundle/Event/EasyAdminSubscriber.php
+@@ -0,0 +1,22 @@
++<?php
++
++namespace AppBundle\Event;
++
++use JavierEguiluz\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
++use Symfony\Component\EventDispatcher\EventSubscriberInterface;
++use Symfony\Component\EventDispatcher\GenericEvent;
++
++class EasyAdminSubscriber implements EventSubscriberInterface
++{
++    public static function getSubscribedEvents()
++    {
++        return [
++            EasyAdminEvents::PRE_UPDATE => 'onPreUpdate',
++        ];
++    }
++
++    public function onPreUpdate(GenericEvent $event)
++    {
++        dump($event);die;
++    }
++}

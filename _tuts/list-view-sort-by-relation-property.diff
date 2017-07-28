@@ -1,0 +1,12 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index c83a07c..a7f9a36 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -119,6 +119,7 @@ easy_admin:
+                     - { property: 'userAvatarFilename', label: 'User avatar', type: 'image', base_path: '/images/' }
+                     - createdAt
+                     - genus
++                sort: ['genus.name', 'ASC']
+         SubFamily:
+             class: AppBundle\Entity\SubFamily
+             list:

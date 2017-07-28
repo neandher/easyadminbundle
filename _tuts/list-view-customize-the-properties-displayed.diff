@@ -1,0 +1,18 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index caf38dc..914e02d 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -97,6 +97,13 @@ easy_admin:
+                 actions:
+                     - { name: 'edit', icon: 'pencil', label: 'Edit' }
+                     - { name: 'show', icon: 'info-circle', label: '' }
++                fields:
++                    - 'id'
++                    - 'name'
++                    - 'isPublished'
++                    - { property: 'firstDiscoveredAt', format: 'M Y', label: 'Discovered' }
++                    - 'funFact'
++                    - { property: 'speciesCount', format: '%b' }
+             search:
+                 help: null
+         GenusNote:

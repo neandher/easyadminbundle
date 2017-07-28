@@ -1,0 +1,14 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index 300a469..caf38dc 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -94,6 +94,9 @@ easy_admin:
+             help: Genuses are not covered under warranty!
+             list:
+                 help: Do not feed!
++                actions:
++                    - { name: 'edit', icon: 'pencil', label: 'Edit' }
++                    - { name: 'show', icon: 'info-circle', label: '' }
+             search:
+                 help: null
+         GenusNote:

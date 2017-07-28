@@ -1,0 +1,15 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index d790dff..0dc8d2a 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -112,7 +112,9 @@ easy_admin:
+             class: AppBundle\Entity\Genus
+             label: HORDE of Genuses 😱 !!!
+             list:
+-                dql_filter: 'entity.speciesCount >= 50000'
++                dql_filter: 'entity.speciesCount >= 50000 AND entity.isPublished = true'
++                sort: 'speciesCount'
++                help: Run for your life!!! 😱😱😱
+         GenusNote:
+             class: AppBundle\Entity\GenusNote
+             label: Genus Notes

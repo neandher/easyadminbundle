@@ -1,0 +1,18 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index f9ff6b4..d8da6b4 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -92,6 +92,13 @@ easy_admin:
+         form_theme:
+             - horizontal
+             - easy_admin/_form_theme.html.twig
++        menu:
++            - User
++            - Genus
++            - GenusHorde
++            - GenusNote
++            - SubFamily
++
+     list:
+         title: 'List of %%entity_label%%'
+         actions: ['show', 'export']

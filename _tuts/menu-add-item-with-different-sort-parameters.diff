@@ -1,0 +1,18 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index 459e58b..37946fd 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -99,6 +99,13 @@ easy_admin:
+                 label: 'Genus'
+                 children:
+                     - Genus
++                    -
++                        entity: 'Genus'
++                        label: 'Genuses (sorted by ID)'
++                        params:
++                            sortField: 'id'
++                            sortDirection: 'ASC'
++                            pizza: 'delicious'
+                     - GenusHorde
+                     - { label: 'Related' }
+                     - { entity: 'GenusNote', label: 'Notes', icon: 'sticky-note' }

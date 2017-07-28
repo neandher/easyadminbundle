@@ -1,0 +1,35 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index 22fc6b3..e3c41c7 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -181,6 +181,7 @@ easy_admin:
+             disabled_actions: ['show']
+         User:
+             class: AppBundle\Entity\User
++            controller: AppBundle\Controller\EasyAdmin\UserController
+             list:
+                 fields:
+                     - id
+diff --git a/src/AppBundle/Controller/EasyAdmin/UserController.php b/src/AppBundle/Controller/EasyAdmin/UserController.php
+new file mode 100644
+index 0000000..7381168
+--- /dev/null
++++ b/src/AppBundle/Controller/EasyAdmin/UserController.php
+@@ -0,0 +1,17 @@
++<?php
++
++namespace AppBundle\Controller\EasyAdmin;
++
++use AppBundle\Entity\User;
++use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
++
++class UserController extends BaseAdminController
++{
++    /**
++     * @param User $entity
++     */
++    protected function preUpdateEntity($entity)
++    {
++        $entity->setUpdatedAt(new \DateTime());
++    }
++}

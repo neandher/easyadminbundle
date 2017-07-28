@@ -1,0 +1,12 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index 914e02d..6e307e6 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -106,6 +106,7 @@ easy_admin:
+                     - { property: 'speciesCount', format: '%b' }
+             search:
+                 help: null
++                fields: ['id', 'name']
+         GenusNote:
+             class: AppBundle\Entity\GenusNote
+             label: Genus Notes

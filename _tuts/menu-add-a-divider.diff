@@ -1,0 +1,12 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index d26c408..b9aedb4 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -95,6 +95,7 @@ easy_admin:
+         menu:
+             - { label: 'Dashboard', route: 'admin_dashboard', default: true }
+             - { entity: 'User', label: 'Users', icon: 'user' }
++            - { label: 'Genus' }
+             - Genus
+             - GenusHorde
+             - { entity: 'GenusNote', label: 'Notes', icon: 'sticky-note' }
