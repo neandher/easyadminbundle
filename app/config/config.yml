@@ -77,3 +77,36 @@ stof_doctrine_extensions:
     orm:
         default:
             sluggable: true
+
+easy_admin:
+    site_name: Aqua<i>Note</i>
+    design:
+        brand_color: '#81b9ba'
+        assets:
+            css: ['css/custom_backend.css']
+    list:
+        title: 'List of %%entity_label%%'
+        actions: ['show']
+        #actions: ['-show']
+    #disabled_actions: ['show']
+    entities:
+        Genus:
+            class: AppBundle\Entity\Genus
+            label: Genuses
+            help: 'Genuses are not covered by warranty!'
+            list:
+                help: 'Do not feed!'
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: 'Edit' }
+                    - { name: 'show', icon: 'info-circle', label: '' }
+            search:
+                help: null
+        GenusNote:
+            class: AppBundle\Entity\GenusNote
+            label: 'Genus Notes'
+            list:
+                title: 'List of notes'
+        SubFamily:
+            class: AppBundle\Entity\SubFamily
+        User:
+            class: AppBundle\Entity\User

@@ -262,4 +262,12 @@ class User implements UserInterface
     {
         $this->lastUpdatedBy = $lastUpdatedBy;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getFullName() ? $this->getFullName() : $this->getEmail();
+    }
 }
